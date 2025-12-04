@@ -11,6 +11,7 @@ def angle_to_percent (angle) :
         return False
 
     start = 4
+
     end = 12.5
     ratio = (end - start)/180 #Calcul ratio from angle to percent
 
@@ -57,3 +58,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
