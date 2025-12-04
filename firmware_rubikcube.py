@@ -1,8 +1,20 @@
 #!/usr/bin/env python3
 #-- coding: utf-8 --
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 import time
 import re
+
+def stringParser(movement_string: str):
+    """
+    Finds matches that fit in pattern <__STRING_PATTERN>
+    and returns a list with them, ordered by first to appear.
+    """
+
+    __STRING_PATTERN = r"[LRUDBF]['2]?"  
+
+    return re.findall(__STRING_PATTERN, movement_string)
+
+
 
 
 #Set function to calculate percent from angle
@@ -27,32 +39,54 @@ def mapPerformRotation(movement_string):
 
     return
 
+
+# def movement_LEFT():
+
+def movement_DOWN():
+    
+    
+
+    
+
+    pass
+
+
 def main():
 
-    GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
-    GPIO.setwarnings(False) #Disable warnings
+    string = "L'D2URF2B'LL"
 
-    #Use pin 12 for PWM signal
-    pwm_gpio = 12
-    frequence = 50
-    GPIO.setup(pwm_gpio, GPIO.OUT)
-    pwm = GPIO.PWM(pwm_gpio, frequence)
+    print(stringParser(string))
 
-    #Init at 0°
-    pwm.start(angle_to_percent(0))
-    time.sleep(1)
+    exit(0)
 
-    #Go at 90°
-    pwm.ChangeDutyCycle(angle_to_percent(90))
-    time.sleep(1)
 
-    #Finish at 180°
-    pwm.ChangeDutyCycle(angle_to_percent(180))
-    time.sleep(1)
 
-    #Close GPIO & cleanup
-    pwm.stop()
-    GPIO.cleanup()
+
+    #
+    # GPIO.setmode(GPIO.BOARD) #Use Board numerotation mode
+    # GPIO.setwarnings(False) #Disable warnings
+    #
+    # #Use pin 12 for PWM signal
+    # pwm_gpio = 12
+    # frequence = 50
+    # GPIO.setup(pwm_gpio, GPIO.OUT)
+    # pwm = GPIO.PWM(pwm_gpio, frequence)
+    #
+    # #Init at 0°
+    # pwm.start(angle_to_percent(0))
+    # time.sleep(1)
+    #
+    # #Go at 90°
+    # pwm.ChangeDutyCycle(angle_to_percent(90))
+    # time.sleep(1)
+    #
+    # #Finish at 180°
+    # pwm.ChangeDutyCycle(angle_to_percent(180))
+    # time.sleep(1)
+    #
+    # #Close GPIO & cleanup
+    # pwm.stop()
+    # GPIO.cleanup()
 
     return
 
