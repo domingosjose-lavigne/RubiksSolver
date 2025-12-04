@@ -42,3 +42,4 @@ time.sleep(1)
 #Close GPIO & cleanup
 pwm.stop()
 GPIO.cleanup()
+#arroz
